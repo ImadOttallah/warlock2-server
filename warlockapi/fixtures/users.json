@@ -1,0 +1,73 @@
+
+[
+  {
+    "model": "warlockapi.user",
+    "pk": 1,
+    "fields": {
+      "uid": 1,
+      "first_name": "Imad",
+      "last_name": "Ottallah",
+      "bio": "My name is Imad",
+      "profile_image_url": "",
+      "email": "imad@imad.com",
+      "created_on": "2022-12-15",
+      "active": "True"
+  }
+},
+{
+  "model": "warlockapi.user",
+  "pk": 2,
+  "fields": {
+    "uid": 2,
+    "first_name": "Cody",
+    "last_name": "Clark",
+    "bio": "My name is Cody",
+    "profile_image_url": "",
+    "email": "cody@cody.com",
+    "created_on": "2022-12-15",
+    "active": "True"
+}
+},
+{
+  "model": "warlockapi.user",
+  "pk": 3,
+  "fields": {
+    "uid": 3,
+    "first_name": "Tots",
+    "last_name": "Stotsky",
+    "bio": "My name is Tots",
+    "profile_image_url": "",
+    "email": "tots@tots.com",
+    "created_on": "2022-12-15",
+    "active": "True"
+  }
+},
+{
+  "model": "warlockapi.user",
+  "pk": 4,
+  "fields": {
+    "uid": 4,
+    "first_name": "Adam",
+    "last_name": "Steel",
+    "bio": "My name is Adam",
+    "profile_image_url": "",
+    "email": "adam@adam.com",
+    "created_on": "2022-12-15",
+    "active": "True"
+  }
+},
+{
+  "model": "warlockapi.user",
+  "pk": 4,
+  "fields": {
+    "uid": 4,
+    "first_name": "Tatiana",
+    "last_name": "Pronoza",
+    "bio": "My name is Tatiana",
+    "profile_image_url": "",
+    "email": "tatiana@tatiana.com",
+    "created_on": "2022-12-15",
+    "active": "True"
+  }
+}
+]

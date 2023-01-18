@@ -1,0 +1,38 @@
+[
+  {
+    "model": "warlockapi.campaign",
+    "pk": 1,
+    "fields": {
+      "user_id" : 1,
+      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
+      "campainId" : "2",
+      "name" : "Tests of Valor",
+      "dateCreated " : "05041999",
+      "description": "Once a long time ago!"
+    }
+  },
+  {
+    "model": "warlockapi.campaign",
+    "pk": 2,
+    "fields": {
+      "user_id" : 2,
+      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
+      "campainId" : "2",
+      "name" : "Tests of Silver",
+      "dateCreated " : "05041999",
+      "description": "Once a long time ago!"
+    }
+  },
+  {
+    "model": "warlockapi.campaign",
+    "pk": 3,
+    "fields": {
+      "user_id" : 3,
+      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
+      "campainId" : "2",
+      "name" : "Tests of Gold",
+      "dateCreated " : "05041999",
+      "description": "Once a long time ago!" 
+    }
+  }
+]
