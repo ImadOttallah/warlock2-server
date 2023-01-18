@@ -1,6 +1,5 @@
 from django.db import models
 from .user import User
-from .npc_type import NpcType
 
 class Npc(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
