@@ -26,7 +26,7 @@ class Character(models.Model):
     dodge_skill = models.CharField(max_length=50)
     endurance_skill = models.CharField(max_length=50)
     history_skill = models.CharField(max_length=50)
-    incabtaion_skill = models.CharField(max_length=50)
+    incantaion_skill = models.CharField(max_length=50)
     intimidate_skill = models.CharField(max_length=50)
     language_skill = models.CharField(max_length=50)
     large_blade_skill = models.CharField(max_length=50)
