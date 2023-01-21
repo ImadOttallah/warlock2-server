@@ -2,7 +2,7 @@ from django.db import models
 from .user import User
 
 class Npc(models.Model):
-    user= models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=300)
     image = models.CharField(max_length=300)

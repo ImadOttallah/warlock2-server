@@ -3,7 +3,7 @@ from .user import User
 
 class Character(models.Model):
 
-    user= models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     image = models.CharField(max_length=300)
     community = models.CharField(max_length=50)

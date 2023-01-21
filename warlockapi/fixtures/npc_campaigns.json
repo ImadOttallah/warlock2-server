@@ -1,0 +1,26 @@
+[
+  {
+    "model": "warlockapi.npc_campaign",
+    "pk": 1,
+    "fields": {
+      "npc": 1,
+      "campaign" : 1
+    }
+  },
+  {
+    "model": "warlockapi.npc_campaign",
+    "pk": 2,
+    "fields": {
+      "npc": 2,
+      "campaign" : 1
+    }
+  },
+  {
+    "model": "warlockapi.npc_campaign",
+    "pk": 3,
+    "fields": {
+      "npc": 1,
+      "campaign" : 1
+    }
+  }
+]

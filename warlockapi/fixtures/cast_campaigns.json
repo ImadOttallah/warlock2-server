@@ -1,0 +1,26 @@
+[
+  {
+    "model": "warlockapi.cast_campaign",
+    "pk": 1,
+    "fields": {
+      "cast": 1,
+      "campaign" : 1
+    }
+  },
+  {
+    "model": "warlockapi.cast_campaign",
+    "pk": 2,
+    "fields": {
+      "cast": 2,
+      "campaign" : 1
+    }
+  },
+  {
+    "model": "warlockapi.cast_campaign",
+    "pk": 3,
+    "fields": {
+      "cast": 1,
+      "campaign" : 1
+    }
+  }
+]
