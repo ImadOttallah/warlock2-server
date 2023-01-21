@@ -3,7 +3,7 @@ from .user import User
 
 class Character(models.Model):
 
-    user_id= models.ForeignKey(User, on_delete=models.CASCADE)
+    user= models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     image = models.CharField(max_length=300)
     community = models.CharField(max_length=50)
@@ -26,7 +26,7 @@ class Character(models.Model):
     dodge_skill = models.CharField(max_length=50)
     endurance_skill = models.CharField(max_length=50)
     history_skill = models.CharField(max_length=50)
-    incantaion_skill = models.CharField(max_length=50)
+    incantation_skill = models.CharField(max_length=50)
     intimidate_skill = models.CharField(max_length=50)
     language_skill = models.CharField(max_length=50)
     large_blade_skill = models.CharField(max_length=50)
@@ -41,6 +41,7 @@ class Character(models.Model):
     small_blade_skill = models.CharField(max_length=50)
     spot_skill = models.CharField(max_length=50)
     stealth_skill = models.CharField(max_length=50)
+    streetwise_skill = models.CharField(max_length=50)
     survival_skill = models.CharField(max_length=50)
     swimming_skill = models.CharField(max_length=50)
     thrown_skill = models.CharField(max_length=50)
