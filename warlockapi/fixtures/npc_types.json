@@ -1,20 +1,20 @@
 [
   {
-    "model": "warlockapi.npc_type",
+    "model": "warlockapi.npctype",
     "pk": 1,
     "fields": {
       "name" : "Villain"
     }
   },
   {
-    "model": "warlockapi.npc_type",
+    "model": "warlockapi.npctype",
     "pk": 2,
     "fields": {
       "name" : "Support"
     }
   },
   {
-    "model": "warlockapi.npc_type",
+    "model": "warlockapi.npctype",
     "pk": 3,
     "fields": {
       "name" : "Random" 

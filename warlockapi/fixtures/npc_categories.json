@@ -1,6 +1,6 @@
 [
   {
-    "model": "warlockapi.castcampaign",
+    "model": "warlockapi.npccategory",
     "pk": 1,
     "fields": {
       "cast": 1,
@@ -8,7 +8,7 @@
     }
   },
   {
-    "model": "warlockapi.castcampaign",
+    "model": "warlockapi.npccategory",
     "pk": 2,
     "fields": {
       "cast": 2,
@@ -16,7 +16,7 @@
     }
   },
   {
-    "model": "warlockapi.castcampaign",
+    "model": "warlockapi.npccategory",
     "pk": 3,
     "fields": {
       "cast": 1,
