@@ -8,4 +8,3 @@ class Campaign(models.Model):
     image = models.CharField(max_length=300)
     date_created = models.DateField()
     description = models.CharField(max_length=300)
-    

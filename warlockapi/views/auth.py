@@ -1,6 +1,7 @@
-from warlockapi.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from warlockapi.models import User
+
 
 
 @api_view(['POST'])
@@ -14,7 +15,7 @@ def check_user(request):
     # Use the built-in authenticate method to verify
     # authenticate returns the user object or None if no user is found
     try:
-    
+
         user = User.objects.get(uid=uid)
 
     # If authentication was successful, respond with their token
