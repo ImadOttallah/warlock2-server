@@ -17,12 +17,32 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from warlockapi.views import CampaignView,CastCampaignView
+from warlockapi.views import (
+    CampaignView,
+    CastCampaignView,
+    CastCategoryView,
+    CastTypeView,
+    CastView,
+    CharacterView,
+    NpcCampaignView,
+    NpcCategoryView,
+    NpcTypeView,
+    NpcView,
+    UserView)
 from warlockapi.views import register_user, check_user
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'campaigns', CampaignView, 'campaign')
 router.register(r'cast_campaigns', CastCampaignView, 'cast_campaign')
+router.register(r'cast_categories', CastCategoryView, 'cast_category')
+router.register(r'npc_campaigns', NpcCampaignView, 'npc_campaign')
+router.register(r'npc_categories', NpcCategoryView, 'npc_category')
+router.register(r'characters', CharacterView, 'character')
+router.register(r'cast_types', CastTypeView, 'cast_type')
+router.register(r'npc_types', NpcTypeView, 'npc_type')
+router.register(r'casts', CastView, 'cast')
+router.register(r'npcs', NpcView, 'npc')
+router.register(r'users', UserView, 'user')
 
 urlpatterns = [
     path('register', register_user),

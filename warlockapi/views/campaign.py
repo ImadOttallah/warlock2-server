@@ -41,10 +41,10 @@ class CampaignView(ViewSet):
         """Handle PUT requests for a campaign"""
 
         campaign = Campaign.objects.get(pk=pk)
-        campaign.name = request.data["name"],
-        campaign.image = request.data["image"],
-        campaign.date_created = request.data["date_created"],
-        campaign.description = request.data["description"],
+        campaign.name = request.data["name"]
+        campaign.image = request.data["image"]
+        campaign.date_created = request.data["date_created"]
+        campaign.description = request.data["description"]
         campaign.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
