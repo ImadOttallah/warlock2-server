@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from warlockapi.models import User
 
 
-
 @api_view(['POST'])
 def check_user(request):
     '''Checks to see if User exists
@@ -31,7 +30,7 @@ def check_user(request):
             'active': user.active
         }
         return Response(data)
-    except:
+    except Exception:
         # Bad login details were provided. So we can't log the user in.
         data = { 'valid': False }
         return Response(data)

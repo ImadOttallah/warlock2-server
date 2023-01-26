@@ -1,20 +1,20 @@
 [
   {
-    "model": "warlockapi.cast_type",
+    "model": "warlockapi.casttype",
     "pk": 1,
     "fields": {
       "name" : "Animal"
     }
   },
   {
-    "model": "warlockapi.cast_type",
+    "model": "warlockapi.casttype",
     "pk": 2,
     "fields": {
       "name" : "Undead"
     }
   },
   {
-    "model": "warlockapi.cast_type",
+    "model": "warlockapi.casttype",
     "pk": 3,
     "fields": {
       "name" : "Monster" 

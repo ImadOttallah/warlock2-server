@@ -17,7 +17,6 @@ class Character(models.Model):
     bargain_skill = models.CharField(max_length=50)
     blunt_skill = models.CharField(max_length=50)
     bow_skill = models.CharField(max_length=50)
-    bow_skill = models.CharField(max_length=50)
     brawling_skill = models.CharField(max_length=50)
     command_skill = models.CharField(max_length=50)
     crossbow_skill = models.CharField(max_length=50)
