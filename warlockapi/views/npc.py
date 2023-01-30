@@ -2,8 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import Npc, User
-
+from warlockapi.models import Npc, User, NpcCategory
 
 class NpcView(ViewSet):
 
@@ -19,12 +18,16 @@ class NpcView(ViewSet):
     def list(self, request):
         """GET all campaigns"""
         npcs = Npc.objects.all()
+        npc_category = request.query_params.get('category', None)
+        if npc_category is not None:
+            categories = categories.filter(npc_category_id=npc_category)
         serializer = NpcSerializer(npcs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
         user = User.objects.get(pk=request.data["user_id"])
+        npc_category = NpcCategory.objects.get(pk=request.data["npc_category"])
 
         npc = Npc.objects.create(
             name = request.data["name"],
@@ -36,8 +39,8 @@ class NpcView(ViewSet):
             adventuring_skills = request.data["adventuring_skills"],
             stamina = request.data["stamina"],
             notes = request.data["notes"],
-            user=user
-
+            user=user,
+            npc_category=npc_category
         )
         serializer = NpcSerializer(npc)
         return Response(serializer.data)
@@ -55,6 +58,8 @@ class NpcView(ViewSet):
         npc.adventuring_skills = request.data["adventuring_skills"]
         npc.stamina = request.data["stamina"]
         npc.notes = request.data["notes"]
+        npc_category = NpcCategory.objects.get(pk=request.data["npc_category"])
+        npc.npc_category = npc_category
         npc.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -77,6 +82,7 @@ class NpcSerializer(serializers.ModelSerializer):
                   'armour',
                   'adventuring_skills',
                   'stamina',
-                  'notes')
+                  'notes'
+                  'npc_category')
         depth = 2
     

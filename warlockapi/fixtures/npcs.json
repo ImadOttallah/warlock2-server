@@ -4,6 +4,7 @@
     "pk": 1,
     "fields": {
       "user_id": 1,
+      "npc_category": 1,
       "name" : "Gundar",
       "description" : "Short and Ugly",
       "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
@@ -20,6 +21,7 @@
     "pk": 2,
     "fields": {
       "user_id": 1,
+      "npc_category": 1,
       "name" : "Max",
       "description" : "Short and Ugly",
       "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
@@ -36,6 +38,7 @@
     "pk": 3,
     "fields": {
       "user_id": 1,
+      "npc_category": 1,
       "name" : "Tom",
       "description" : "Short and Ugly",
       "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",

@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import Character, User
+from warlockapi.models import Character, User, Campaign
 
 
 class CharacterView(ViewSet):
@@ -19,12 +19,17 @@ class CharacterView(ViewSet):
     def list(self, request):
         """GET all campaigns"""
         characters = Character.objects.all()
+        campaign = request.query_params.get('campaign', None)
+        if campaign is not None:
+            campaigns = campaigns.filter(campaign=campaign)
+            
         serializer = CharacterSerializer(characters, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
         user = User.objects.get(pk=request.data["user_id"])
+        campaign = Campaign.objects.get(pk=request.data["campaign"])
 
         character = Character.objects.create(
             name = request.data["name"],
@@ -72,7 +77,7 @@ class CharacterView(ViewSet):
             traits = request.data["traits"],
             notes = request.data["notes"],
             spells = request.data["spells"],
-
+            campaign = campaign,
             user=user
 
         )
@@ -128,6 +133,8 @@ class CharacterView(ViewSet):
         character.traits = request.data["traits"]
         character.notes = request.data["notes"]
         character.spells = request.data["spells"]
+        campaign = Campaign.objects.get(pk=request.data["campaign"])
+        campaign = campaign,
         character.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -186,6 +193,7 @@ class CharacterSerializer(serializers.ModelSerializer):
                   'weapons',
                   'traits',
                   'notes',
-                  'spells' )
+                  'spells',
+                  'campaign')
         depth = 2
     
