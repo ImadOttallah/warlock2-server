@@ -4,7 +4,7 @@ from .character import Character
 from .npc import Npc
 from .cast import Cast
 
-class Campaign(models.Model):
+class Campaigns(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
@@ -15,10 +15,10 @@ class Campaign(models.Model):
     date_created = models.DateField()
     description = models.CharField(max_length=300)
     
-@property
-def joined(self):
-    return self.__joined
+# @property
+# def joined(self):
+#     return self.__joined
 
-@joined.setter
-def joined(self, value):
-    self.__joined = value
+# @joined.setter
+# def joined(self, value):
+#     self.__joined = value
