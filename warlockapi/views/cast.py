@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import Cast, User
+from warlockapi.models import Cast, User, CastCategory
 
 
 class CastView(ViewSet):
@@ -19,12 +19,17 @@ class CastView(ViewSet):
     def list(self, request):
         """GET all campaigns"""
         casts = Cast.objects.all()
+        cast_category = request.query_params.get('category', None)
+        if cast_category is not None:
+            categories = categories.filter(cast_category_id=cast_category)
+          
         serializer = CastSerializer(casts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
         user = User.objects.get(pk=request.data["user_id"])
+        cast_category = CastCategory.objects.get(pk=request.data["cast_category"])
 
         cast = Cast.objects.create(
             name = request.data["name"],
@@ -36,7 +41,8 @@ class CastView(ViewSet):
             adventuring_skills = request.data["adventuring_skills"],
             stamina = request.data["stamina"],
             notes = request.data["notes"],
-            user=user
+            user=user,
+            cast_category=cast_category
 
         )
         serializer = CastSerializer(cast)
@@ -55,7 +61,10 @@ class CastView(ViewSet):
         cast.adventuring_skills = request.data["adventuring_skills"]
         cast.stamina = request.data["stamina"]
         cast.notes = request.data["notes"]
+        cast_category = CastCategory.objects.get(pk=request.data["cast_category"])
+        cast.cast_category = cast_category
         cast.save()
+        
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
@@ -77,6 +86,7 @@ class CastSerializer(serializers.ModelSerializer):
                   'armour',
                   'adventuring_skills',
                   'stamina',
-                  'notes')
+                  'notes',
+                  'cast_category')
         depth = 2
     
