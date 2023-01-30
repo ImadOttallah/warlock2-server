@@ -1,4 +1,4 @@
-from .campaign import Campaigns
+from .campaign import Campaign
 from .cast_campaign import CastCampaign
 from .cast_category import CastCategory
 from .cast_type import CastType

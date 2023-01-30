@@ -4,7 +4,7 @@ from .character import Character
 from .npc import Npc
 from .cast import Cast
 
-class Campaigns(models.Model):
+class Campaign(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
