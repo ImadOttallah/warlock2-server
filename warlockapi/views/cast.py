@@ -22,7 +22,6 @@ class CastView(ViewSet):
         cast_category = request.query_params.get('category', None)
         if cast_category is not None:
             categories = categories.filter(cast_category_id=cast_category)
-          
         serializer = CastSerializer(casts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 

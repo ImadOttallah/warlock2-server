@@ -24,7 +24,7 @@ class CampaignView(ViewSet):
             characters = characters.filter(character_id=character)
             character = request.query_params.get('character', None)
         if npc is not None:
-            npcs = characters.filter(npc_id=npc)
+            npcs = npcs.filter(npc_id=npc)
             npc = request.query_params.get('npc', None)
         if cast is not None:
             casts = casts.filter(cast_id=cast)
