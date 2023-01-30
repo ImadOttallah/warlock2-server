@@ -70,7 +70,7 @@ class CastSerializer(serializers.ModelSerializer):
         fields = ('id',
                   'user',
                   'name',
-                  'description'
+                  'description',
                   'image',
                   'actions',
                   'weapon',
