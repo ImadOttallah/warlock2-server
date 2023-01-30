@@ -14,3 +14,11 @@ class Campaign(models.Model):
     image = models.CharField(max_length=300)
     date_created = models.DateField()
     description = models.CharField(max_length=300)
+    
+@property
+def joined(self):
+    return self.__joined
+
+@joined.setter
+def joined(self, value):
+    self.__joined = value
