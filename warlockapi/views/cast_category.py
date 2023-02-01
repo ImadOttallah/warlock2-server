@@ -3,7 +3,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import CastCategory,Cast,CastType
+from warlockapi.models import CastCategory,CastType
 
 class CastCategoryView(ViewSet):
 
@@ -24,10 +24,8 @@ class CastCategoryView(ViewSet):
 
     def  create(self, request):
         """Handle GET request for single campaign"""
-        cast = Cast.objects.get(pk=request.data["cast"])
-        cast_type = CastType.objects.get(pk=request.data["cast_type"])
+        cast_type = CastType.objects.get(pk=request.data["cast_type_id"])
         cast_category = CastCategory.objects.create(
-            cast = cast,
             cast_type = cast_type
         )
         serializer = CastCategorySerializer(cast_category)
@@ -43,5 +41,5 @@ class CastCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CastCategory
-        fields = ('id', 'cast', 'cast_type')
+        fields = ('id', 'cast_type')
         depth = 2

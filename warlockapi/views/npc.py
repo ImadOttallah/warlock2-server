@@ -27,7 +27,7 @@ class NpcView(ViewSet):
     def create(self, request):
         """Handle PUT requests for a campaign"""
         user = User.objects.get(pk=request.data["user_id"])
-        npc_category = NpcCategory.objects.get(pk=request.data["npc_category"])
+        npc_category = NpcCategory.objects.get(pk=request.data["npc_category_id"])
 
         npc = Npc.objects.create(
             name = request.data["name"],
@@ -58,7 +58,7 @@ class NpcView(ViewSet):
         npc.adventuring_skills = request.data["adventuring_skills"]
         npc.stamina = request.data["stamina"]
         npc.notes = request.data["notes"]
-        npc_category = NpcCategory.objects.get(pk=request.data["npc_category"])
+        npc_category = NpcCategory.objects.get(pk=request.data["npc_category_id"])
         npc.npc_category = npc_category
         npc.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -82,7 +82,7 @@ class NpcSerializer(serializers.ModelSerializer):
                   'armour',
                   'adventuring_skills',
                   'stamina',
-                  'notes'
+                  'notes',
                   'npc_category')
         depth = 2
     

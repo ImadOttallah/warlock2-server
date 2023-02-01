@@ -43,5 +43,5 @@ class NpcCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NpcCategory
-        fields = ('id', 'npc', 'npc_type')
+        fields = ('id', 'npc_type')
         depth = 2

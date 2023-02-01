@@ -28,7 +28,7 @@ class CastView(ViewSet):
     def create(self, request):
         """Handle PUT requests for a campaign"""
         user = User.objects.get(pk=request.data["user_id"])
-        cast_category = CastCategory.objects.get(pk=request.data["cast_category"])
+        cast_category = CastCategory.objects.get(pk=request.data["cast_category_id"])
 
         cast = Cast.objects.create(
             name = request.data["name"],
@@ -60,7 +60,7 @@ class CastView(ViewSet):
         cast.adventuring_skills = request.data["adventuring_skills"]
         cast.stamina = request.data["stamina"]
         cast.notes = request.data["notes"]
-        cast_category = CastCategory.objects.get(pk=request.data["cast_category"])
+        cast_category = CastCategory.objects.get(pk=request.data["cast_category_id"])
         cast.cast_category = cast_category
         cast.save()
         
@@ -76,7 +76,6 @@ class CastSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cast
         fields = ('id',
-                  'user',
                   'name',
                   'description',
                   'image',
@@ -86,6 +85,7 @@ class CastSerializer(serializers.ModelSerializer):
                   'adventuring_skills',
                   'stamina',
                   'notes',
-                  'cast_category')
+                  'cast_category',
+                  'user')
         depth = 2
     

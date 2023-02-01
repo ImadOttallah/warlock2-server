@@ -3,7 +3,6 @@
     "model": "warlockapi.castcategory",
     "pk": 1,
     "fields": {
-      "cast": 1,
       "cast_type" : 1
     }
   },
@@ -11,7 +10,6 @@
     "model": "warlockapi.castcategory",
     "pk": 2,
     "fields": {
-      "cast": 2,
       "cast_type" : 1
     }
   },
@@ -19,7 +17,6 @@
     "model": "warlockapi.castcategory",
     "pk": 3,
     "fields": {
-      "cast": 1,
       "cast_type" : 1
     }
   }
