@@ -19,18 +19,18 @@ class CampaignView(ViewSet):
     def list(self, request):
         """GET all campaigns"""
         campaigns = Campaign.objects.all()
-        # character = request.query_params.get('character', None)
-        # npc = request.query_params.get('npc', None)
-        # cast = request.query_params.get('cast', None)
-        # if character is not None:
-        #     characters = characters.filter(character_id=character)
-        #     character = request.query_params.get('character_id', None)
-        # if npc is not None:
-        #     npcs = npcs.filter(npc_id=npc)
-        #     npc = request.query_params.get('npc_id', None)
-        # if cast is not None:
-        #     casts = casts.filter(cast_id=cast)
-        #     cast = request.query_params.get('cast_id', None)
+        character = request.query_params.get('character', None)
+        npc = request.query_params.get('npc', None)
+        cast = request.query_params.get('cast', None)
+        if character is not None:
+            characters = characters.filter(character_id=character)
+            character = request.query_params.get('character_id', None)
+        if npc is not None:
+            npcs = npcs.filter(npc_id=npc)
+            npc = request.query_params.get('npc_id', None)
+        if cast is not None:
+            casts = casts.filter(cast_id=cast)
+            cast = request.query_params.get('cast_id', None)
         serializer = CampaignSerializer(campaigns, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -75,6 +75,6 @@ class CampaignView(ViewSet):
 class CampaignSerializer(serializers.ModelSerializer):
     class Meta:
         model = Campaign
-        fields = ('id', 'user', 'name', 'image', 'date_created', 'description', 'casts')
+        fields = ('id', 'user', 'name', 'image', 'date_created', 'description', 'casts', 'npcs')
         depth = 2
     

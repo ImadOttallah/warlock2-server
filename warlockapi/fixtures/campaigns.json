@@ -1,14 +1,11 @@
 [
   {
     "model": "warlockapi.campaign",
-    "pk": 1,
+    "pk": 2,
     "fields": {
-      "user_id" : 1,
-      "cast": 1,
-      "npc": 1,
-      "character": 1,
+      "user_id" : 2,
       "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "name" : "Tests of Valor",
+      "name" : "Tests of Silver",
       "date_created" : "2022-12-15",
       "description": "Once a long time ago!"
     }
@@ -18,9 +15,6 @@
     "pk": 2,
     "fields": {
       "user_id" : 2,
-      "cast": 1,
-      "npc": 1,
-      "character": 1,
       "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
       "name" : "Tests of Silver",
       "date_created" : "2022-12-15",
@@ -32,9 +26,6 @@
     "pk": 3,
     "fields": {
       "user_id" : 3,
-      "cast": 1,
-      "npc": 1,
-      "character": 1,
       "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
       "name" : "Tests of Gold",
       "date_created" : "2022-12-15",
