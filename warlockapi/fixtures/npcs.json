@@ -4,14 +4,8 @@
     "pk": 1,
     "fields": {
       "user_id": 1,
-      "npc_category": 1,
+      "npctype": 1,
       "name" : "Gundar",
-      "description" : "Short and Ugly",
-      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "actions" : "1",
-      "weapon" : "Axe/5/1D6",
-      "armour" : "1d6 Chain",
-      "adventuring_skills" : "6",
       "stamina" : "6",
       "notes" : "Intelligent"
     }
