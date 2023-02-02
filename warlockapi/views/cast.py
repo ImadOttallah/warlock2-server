@@ -27,7 +27,8 @@ class CastView(ViewSet):
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
-        user = User.objects.get(pk=request.data["user_id"])
+        uid = request.data['user_id']
+        user = User.objects.filter(uid=uid).first()
         cast_category = CastCategory.objects.get(pk=request.data["cast_category_id"])
 
         cast = Cast.objects.create(
@@ -44,6 +45,9 @@ class CastView(ViewSet):
             cast_category=cast_category
 
         )
+        # for id in request.data["castCategory"]:
+        #     class_category_id = classes.objects.get(pk=id)
+        #     charclass.objects.create(class_id=class_id, character_id=Character)
         serializer = CastSerializer(cast)
         return Response(serializer.data)
 

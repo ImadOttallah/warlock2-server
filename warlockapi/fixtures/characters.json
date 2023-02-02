@@ -3,7 +3,7 @@
     "model": "warlockapi.character",
     "pk": 1,
     "fields": {
-      "user_id": 1,
+      "user": 1,
       "name" : "Gundar",
       "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
       "community" : "Dwarf",

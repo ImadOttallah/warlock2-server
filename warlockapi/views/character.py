@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import Character, User, Campaign
+from warlockapi.models import Character, User
 
 
 class CharacterView(ViewSet):
@@ -28,6 +28,8 @@ class CharacterView(ViewSet):
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
+        # uid = request.data['user_id']
+        # user = User.objects.filter(uid=uid).first()
         user = User.objects.get(pk=request.data["user_id"])
 
         character = Character.objects.create(

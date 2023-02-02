@@ -1,4 +1,5 @@
 from django.http import HttpResponseServerError
+from django.utils import timezone, dateformat
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
@@ -36,12 +37,12 @@ class CampaignView(ViewSet):
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
-        user = User.objects.get(pk=request.data["user_id"])
-
+        uid = request.data['user_id']
+        user = User.objects.filter(uid=uid).first()
         campaign = Campaign.objects.create(
             name = request.data["name"],
             image = request.data["image"],
-            date_created = request.data["date_created"],
+            # date_created = request.data["date_created"],
             description = request.data["description"],
             user=user,
 
@@ -55,7 +56,8 @@ class CampaignView(ViewSet):
         campaign = Campaign.objects.get(pk=pk)
         campaign.name = request.data["name"]
         campaign.image = request.data["image"]
-        campaign.date_created = request.data["date_created"]
+        # campaign.date_created = request.data["date_created"]
+        campaign.date_created = dateformat.format(timezone.now(), 'Y-m-d H:i:s')
         campaign.description = request.data["description"]
         character = Character.objects.get(pk=request.data["character"])
         campaign.character = character

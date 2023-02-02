@@ -26,7 +26,8 @@ class NpcView(ViewSet):
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
-        user = User.objects.get(pk=request.data["user_id"])
+        uid = request.data['user_id']
+        user = User.objects.filter(uid=uid).first()
         npc_category = NpcCategory.objects.get(pk=request.data["npc_category_id"])
 
         npc = Npc.objects.create(
