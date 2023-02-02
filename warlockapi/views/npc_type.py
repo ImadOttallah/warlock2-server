@@ -10,8 +10,8 @@ class NpcTypeView(ViewSet):
     def retrieve(self, request, pk):
         """Handle GET request for single campaign"""
         try:
-            npc_type = NpcType.objects.get(pk=pk)
-            serializer = NpcTypeSerializer(npc_type)
+            npctype = NpcType.objects.get(pk=pk)
+            serializer = NpcTypeSerializer(npctype)
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -24,10 +24,10 @@ class NpcTypeView(ViewSet):
 
     def  create(self, request):
         """Handle GET request for single campaign"""
-        npc_type = NpcType.objects.create(
+        npctype = NpcType.objects.create(
             name = request.data["name"]
         )
-        serializer = NpcTypeSerializer(npc_type)
+        serializer = NpcTypeSerializer(npctype)
         return Response(serializer.data)
 
     def destroy(self, request, pk):

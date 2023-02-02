@@ -3,21 +3,21 @@
     "model": "warlockapi.npccategory",
     "pk": 1,
     "fields": {
-      "npc_type" : 1
+      "npctype" : 1
     }
   },
   {
     "model": "warlockapi.npccategory",
     "pk": 2,
     "fields": {
-      "npc_type" : 1
+      "npctype" : 1
     }
   },
   {
     "model": "warlockapi.npccategory",
     "pk": 3,
     "fields": {
-      "npc_type" : 1
+      "npctype" : 1
     }
   }
 ]

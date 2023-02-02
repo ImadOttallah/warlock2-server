@@ -1,0 +1,10 @@
+[
+  {
+    "model": "warlockapi.castcampaign",
+    "pk": 1,
+    "fields": {
+      "character": 1,
+      "campaign" : 1
+    }
+  }
+]

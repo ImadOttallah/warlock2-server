@@ -19,9 +19,9 @@ class CastView(ViewSet):
     def list(self, request):
         """GET all campaigns"""
         casts = Cast.objects.all()
-        cast_category = request.query_params.get('category', None)
-        if cast_category is not None:
-            categories = categories.filter(cast_category_id=cast_category)
+        castcategory = request.query_params.get('category', None)
+        if castcategory is not None:
+            categories = categories.filter(castcategory_id=castcategory)
         serializer = CastSerializer(casts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -29,20 +29,14 @@ class CastView(ViewSet):
         """Handle PUT requests for a campaign"""
         uid = request.data['user_id']
         user = User.objects.filter(uid=uid).first()
-        cast_category = CastCategory.objects.get(pk=request.data["cast_category_id"])
+        castcategory = CastCategory.objects.get(pk=request.data["castcategory_id"])
 
         cast = Cast.objects.create(
             name = request.data["name"],
-            description = request.data["description"],
-            image = request.data["image"],
-            actions = request.data["actions"],
-            weapon = request.data["weapon"],
-            armour = request.data["armour"],
-            adventuring_skills = request.data["adventuring_skills"],
             stamina = request.data["stamina"],
             notes = request.data["notes"],
             user=user,
-            cast_category=cast_category
+            castcategory=castcategory
 
         )
         # for id in request.data["castCategory"]:
@@ -56,16 +50,10 @@ class CastView(ViewSet):
 
         cast = Cast.objects.get(pk=pk)
         cast.name = request.data["name"]
-        cast.description = request.data["description"]
-        cast.image = request.data["image"]
-        cast.actions = request.data["actions"]
-        cast.weapon = request.data["weapon"]
-        cast.armour = request.data["armour"]
-        cast.adventuring_skills = request.data["adventuring_skills"]
         cast.stamina = request.data["stamina"]
         cast.notes = request.data["notes"]
-        cast_category = CastCategory.objects.get(pk=request.data["cast_category_id"])
-        cast.cast_category = cast_category
+        cast_category = CastCategory.objects.get(pk=request.data["castcategory_id"])
+        cast.castcategory = cast_category
         cast.save()
         
         return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -80,16 +68,10 @@ class CastSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cast
         fields = ('id',
-                  'name',
-                  'description',
-                  'image',
-                  'actions',
-                  'weapon',
-                  'armour',
-                  'adventuring_skills',
+                  'name'
                   'stamina',
                   'notes',
-                  'cast_category',
+                  'castcategory',
                   'user')
         depth = 2
     

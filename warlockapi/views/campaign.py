@@ -57,13 +57,13 @@ class CampaignView(ViewSet):
         campaign.name = request.data["name"]
         campaign.image = request.data["image"]
         # campaign.date_created = request.data["date_created"]
-        campaign.date_created = dateformat.format(timezone.now(), 'Y-m-d H:i:s')
+        # campaign.date_created = dateformat.format(timezone.now(), 'Y-m-d H:i:s')
         campaign.description = request.data["description"]
-        character = Character.objects.get(pk=request.data["character"])
+        character = Character.objects.get(pk=request.data["character_id"])
         campaign.character = character
-        cast = Cast.objects.get(pk=request.data["cast"])
+        cast = Cast.objects.get(pk=request.data["cast_id"])
         campaign.cast = cast
-        npc = Npc.objects.get(pk=request.data["npc"])
+        npc = Npc.objects.get(pk=request.data["npc_id"])
         campaign.npc = npc
         campaign.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
@@ -77,6 +77,6 @@ class CampaignView(ViewSet):
 class CampaignSerializer(serializers.ModelSerializer):
     class Meta:
         model = Campaign
-        fields = ('id', 'user', 'name', 'image', 'date_created', 'description', 'casts', 'npcs')
+        fields = ('id', 'user', 'name', 'image', 'description', 'casts', 'npcs')
         depth = 2
     

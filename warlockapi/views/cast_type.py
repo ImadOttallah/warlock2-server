@@ -10,24 +10,24 @@ class CastTypeView(ViewSet):
     def retrieve(self, request, pk):
         """Handle GET request for single campaign"""
         try:
-            cast_type = CastType.objects.get(pk=pk)
-            serializer = CastTypeSerializer(cast_type)
+            casttype = CastType.objects.get(pk=pk)
+            serializer = CastTypeSerializer(casttype)
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
     def list(self, request):
         """Handle GET request for single campaign"""
-        cast_types = CastType.objects.all()
-        serializer = CastTypeSerializer(cast_types, many = True)
+        casttypes = CastType.objects.all()
+        serializer = CastTypeSerializer(casttypes, many = True)
         return Response(serializer.data)
 
     def  create(self, request):
         """Handle GET request for single campaign"""
-        cast_type = CastType.objects.create(
+        casttype = CastType.objects.create(
             name = request.data["name"]
         )
-        serializer = CastTypeSerializer(cast_type)
+        serializer = CastTypeSerializer(casttype)
         return Response(serializer.data)
 
     def destroy(self, request, pk):

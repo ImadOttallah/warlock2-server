@@ -3,21 +3,21 @@
     "model": "warlockapi.castcategory",
     "pk": 1,
     "fields": {
-      "cast_type" : 1
+      "casttype" : 1
     }
   },
   {
     "model": "warlockapi.castcategory",
     "pk": 2,
     "fields": {
-      "cast_type" : 1
+      "casttype" : 1
     }
   },
   {
     "model": "warlockapi.castcategory",
     "pk": 3,
     "fields": {
-      "cast_type" : 1
+      "casttype" : 1
     }
   }
 ]

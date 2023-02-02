@@ -4,7 +4,7 @@
     "pk": 1,
     "fields": {
       "user_id": 1,
-      "npctype": 1,
+      "npccategory": 1,
       "name" : "Gundar",
       "stamina" : "6",
       "notes" : "Intelligent"
@@ -15,7 +15,7 @@
     "pk": 2,
     "fields": {
       "user_id": 1,
-      "npctype": 2,
+      "npccategory": 2,
       "name" : "Gundar",
       "stamina" : "6",
       "notes" : "Intelligent"
@@ -26,7 +26,7 @@
     "pk": 3,
     "fields": {
       "user_id": 1,
-      "npctype": 3,
+      "npccategory": 3,
       "name" : "Gundar",
       "stamina" : "6",
       "notes" : "Intelligent"

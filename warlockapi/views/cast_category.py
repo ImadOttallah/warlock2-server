@@ -10,25 +10,25 @@ class CastCategoryView(ViewSet):
     def retrieve(self, request, pk):
         """Handle GET request for single campaign"""
         try:
-            cast_category = CastCategory.objects.get(pk=pk)
-            serializer = CastCategorySerializer(cast_category)
+            castcategory = CastCategory.objects.get(pk=pk)
+            serializer = CastCategorySerializer(castcategory)
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
     def list(self, request):
         """Handle GET request for single campaign"""
-        cast_categories = CastCategory.objects.all()
-        serializer = CastCategorySerializer(cast_categories, many = True)
+        castcategories = CastCategory.objects.all()
+        serializer = CastCategorySerializer(castcategories, many = True)
         return Response(serializer.data)
 
     def  create(self, request):
         """Handle GET request for single campaign"""
-        cast_type = CastType.objects.get(pk=request.data["cast_type_id"])
-        cast_category = CastCategory.objects.create(
-            cast_type = cast_type
+        casttype = CastType.objects.get(pk=request.data["cast_type_id"])
+        castcategory = CastCategory.objects.create(
+            casttype = casttype
         )
-        serializer = CastCategorySerializer(cast_category)
+        serializer = CastCategorySerializer(castcategory)
         return Response(serializer.data)
 
     def destroy(self, request, pk):
@@ -41,5 +41,5 @@ class CastCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CastCategory
-        fields = ('id', 'cast_type')
+        fields = ('id', 'casttype')
         depth = 2
