@@ -11,5 +11,5 @@ class Campaign(models.Model):
     casts = models.ManyToManyField("Cast", through="CastCampaign")
     name = models.CharField(max_length=50)
     image = models.CharField(max_length=300)
-    date_created = models.DateTimeField(default=dateformat.format(timezone.now(), 'Y-m-d H:i:s'), null=True, blank=True)
+    # date_created = models.DateTimeField(default=dateformat.format(timezone.now(), 'Y-m-d H:i:s'), null=True, blank=True)
     description = models.CharField(max_length=300)
