@@ -22,15 +22,15 @@ class CharacterView(ViewSet):
         campaign = request.query_params.get('campaign', None)
         if campaign is not None:
             campaigns = campaigns.filter(campaign=campaign)
-            
+           
         serializer = CharacterSerializer(characters, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
-        # uid = request.data['user_id']
-        # user = User.objects.filter(uid=uid).first()
-        user = User.objects.get(pk=request.data["user_id"])
+        uid = request.data['user_id']
+        user = User.objects.filter(uid=uid).first()
+        # user = User.objects.get(pk=request.data["user_id"])
 
         character = Character.objects.create(
             name = request.data["name"],
@@ -54,6 +54,7 @@ class CharacterView(ViewSet):
         character.notes = request.data["notes"]
         character.spells = request.data["spells"]
         character.save()
+        
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):

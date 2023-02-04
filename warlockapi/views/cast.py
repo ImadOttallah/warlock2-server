@@ -29,7 +29,7 @@ class CastView(ViewSet):
         """Handle PUT requests for a campaign"""
         uid = request.data['user_id']
         user = User.objects.filter(uid=uid).first()
-        castcategory = CastCategory.objects.get(pk=request.data["castcategory_id"])
+        castcategory = CastCategory.objects.get(pk=request.data["castcategory"])
 
         cast = Cast.objects.create(
             name = request.data["name"],
@@ -39,9 +39,10 @@ class CastView(ViewSet):
             castcategory=castcategory
 
         )
-        # for id in request.data["castCategory"]:
-        #     class_category_id = classes.objects.get(pk=id)
-        #     charclass.objects.create(class_id=class_id, character_id=Character)
+        # for category in castcategory:
+        #     print(category)
+        #     CastCategory.objects.create(cast=cast, castcategory=CastCategory.objects.get(pk=category))
+        #     # serializer = ProductSerializer(product)
         serializer = CastSerializer(cast)
         return Response(serializer.data)
 
@@ -52,10 +53,9 @@ class CastView(ViewSet):
         cast.name = request.data["name"]
         cast.stamina = request.data["stamina"]
         cast.notes = request.data["notes"]
-        cast_category = CastCategory.objects.get(pk=request.data["castcategory_id"])
+        cast_category = CastCategory.objects.get(pk=request.data["castcategory"])
         cast.castcategory = cast_category
-        cast.save()
-        
+        cast.save()     
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
@@ -68,7 +68,7 @@ class CastSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cast
         fields = ('id',
-                  'name'
+                  'name',
                   'stamina',
                   'notes',
                   'castcategory',

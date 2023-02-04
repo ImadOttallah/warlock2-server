@@ -10,14 +10,14 @@
     "model": "warlockapi.npccategory",
     "pk": 2,
     "fields": {
-      "npctype" : 1
+      "npctype" : 2
     }
   },
   {
     "model": "warlockapi.npccategory",
     "pk": 3,
     "fields": {
-      "npctype" : 1
+      "npctype" : 3
     }
   }
 ]

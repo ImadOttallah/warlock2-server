@@ -9,3 +9,4 @@ class User(models.Model):
     email = models.EmailField(max_length=25)
     created_on = models.DateField()
     active = models.BooleanField(default=False)
+    

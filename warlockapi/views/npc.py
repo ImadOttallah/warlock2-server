@@ -28,7 +28,7 @@ class NpcView(ViewSet):
         """Handle PUT requests for a campaign"""
         uid = request.data['user_id']
         user = User.objects.filter(uid=uid).first()
-        npccategory = NpcCategory.objects.get(pk=request.data["npccategory_id"])
+        npccategory = NpcCategory.objects.get(pk=request.data["npccategory"])
 
         npc = Npc.objects.create(
             name = request.data["name"],
@@ -47,7 +47,7 @@ class NpcView(ViewSet):
         npc.name = request.data["name"]
         npc.stamina = request.data["stamina"]
         npc.notes = request.data["notes"]
-        npccategory = NpcCategory.objects.get(pk=request.data["npccategory_id"])
+        npccategory = NpcCategory.objects.get(pk=request.data["npccategory"])
         npc.npccategory = npccategory
         npc.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)

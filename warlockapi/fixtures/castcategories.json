@@ -10,14 +10,14 @@
     "model": "warlockapi.castcategory",
     "pk": 2,
     "fields": {
-      "casttype" : 1
+      "casttype" : 2
     }
   },
   {
     "model": "warlockapi.castcategory",
     "pk": 3,
     "fields": {
-      "casttype" : 1
+      "casttype" : 3
     }
   }
 ]
