@@ -2,8 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import Npc, User
-
+from warlockapi.models import Npc, User, NpcCategory
 
 class NpcView(ViewSet):
 
@@ -19,25 +18,24 @@ class NpcView(ViewSet):
     def list(self, request):
         """GET all campaigns"""
         npcs = Npc.objects.all()
+        npccategory = request.query_params.get('category', None)
+        if npccategory is not None:
+            categories = categories.filter(npccategory_id=npccategory)
         serializer = NpcSerializer(npcs, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
-        user = User.objects.get(pk=request.data["user_id"])
+        uid = request.data['user_id']
+        user = User.objects.filter(uid=uid).first()
+        npccategory = NpcCategory.objects.get(pk=request.data["npccategory"])
 
         npc = Npc.objects.create(
             name = request.data["name"],
-            description = request.data["description"],
-            image = request.data["image"],
-            actions = request.data["actions"],
-            weapon = request.data["weapon"],
-            armour = request.data["armour"],
-            adventuring_skills = request.data["adventuring_skills"],
             stamina = request.data["stamina"],
             notes = request.data["notes"],
-            user=user
-
+            user=user,
+            npccategory=npccategory
         )
         serializer = NpcSerializer(npc)
         return Response(serializer.data)
@@ -47,14 +45,10 @@ class NpcView(ViewSet):
 
         npc = Npc.objects.get(pk=pk)
         npc.name = request.data["name"]
-        npc.description = request.data["description"]
-        npc.image = request.data["image"]
-        npc.actions = request.data["actions"]
-        npc.weapon = request.data["weapon"]
-        npc.armour = request.data["armour"]
-        npc.adventuring_skills = request.data["adventuring_skills"]
         npc.stamina = request.data["stamina"]
         npc.notes = request.data["notes"]
+        npccategory = NpcCategory.objects.get(pk=request.data["npccategory"])
+        npc.npccategory = npccategory
         npc.save()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
@@ -70,13 +64,8 @@ class NpcSerializer(serializers.ModelSerializer):
         fields = ('id',
                   'user',
                   'name',
-                  'description',
-                  'image',
-                  'actions',
-                  'weapon',
-                  'armour',
-                  'adventuring_skills',
                   'stamina',
-                  'notes')
+                  'notes',
+                  'npccategory')
         depth = 2
     

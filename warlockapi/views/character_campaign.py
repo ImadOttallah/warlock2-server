@@ -3,56 +3,56 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import CastCampaign,Cast,Campaign
+from warlockapi.models import Campaign, Character, CharacterCampaign
 
-class CastCampaignView(ViewSet):
+class CharacterCampaignView(ViewSet):
 
     def retrieve(self, request, pk):
         """Handle GET request for single campaign"""
         try:
-            castcampaign = CastCampaign.objects.get(pk=pk)
-            serializer = CastCampaignSerializer(castcampaign)
+            charactercampaign = CharacterCampaign.objects.get(pk=pk)
+            serializer = CharacterCampaignSerializer(charactercampaign)
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
     def list(self, request):
         """Handle GET request for single campaign"""
-        castcampaigns = CastCampaign.objects.all()
-        serializer = CastCampaignSerializer(castcampaigns, many = True)
+        charactercampaigns = CharacterCampaign.objects.all()
+        serializer = CharacterCampaignSerializer(charactercampaigns, many = True)
         return Response(serializer.data)
 
     def  create(self, request):
         """Handle GET request for single campaign"""
-        cast = Cast.objects.get(pk=request.data["cast"])
+        character = Character.objects.get(pk=request.data["character"])
         campaign = Campaign.objects.get(pk=request.data["campaign"])
-        castcampaign = CastCampaign.objects.create(
-            cast = cast,
+        charactercampaign = CharacterCampaign.objects.create(
+            character = character,
             campaign = campaign
         )
-        serializer = CastCampaignSerializer(castcampaign)
+        serializer = CharacterCampaignSerializer(charactercampaign)
         return Response(serializer.data)
 
     def update(self, request, pk):
         """Handle GET request for single campaign"""
-        cast = Cast.objects.get(pk=request.data["cast"])
+        character = Character.objects.get(pk=request.data["character"])
         campaign = Campaign.objects.get(pk=request.data["campaign"])
-        cast = Cast.objects.get(pk=pk)
-        cast.cast = cast
-        cast.campaign = campaign
-        cast.save()
+        character = Character.objects.get(pk=pk)
+        character.character = character
+        character.campaign = campaign
+        character.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
         """Handle GET request for single campaign"""
-        cast_campaign = CastCampaign.objects.get(pk=pk)
-        cast_campaign.delete()
+        character_campaign = CharacterCampaign.objects.get(pk=pk)
+        character_campaign.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
-class CastCampaignSerializer(serializers.ModelSerializer):
+class CharacterCampaignSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = CastCampaign
-        fields = ('id', 'cast', 'campaign')
+        model = CharacterCampaign
+        fields = ('id', 'character', 'campaign')
         depth = 2

@@ -4,13 +4,8 @@
     "pk": 1,
     "fields": {
       "user_id": 1,
+      "npccategory": 1,
       "name" : "Gundar",
-      "description" : "Short and Ugly",
-      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "actions" : "1",
-      "weapon" : "Axe/5/1D6",
-      "armour" : "1d6 Chain",
-      "adventuring_skills" : "6",
       "stamina" : "6",
       "notes" : "Intelligent"
     }
@@ -20,13 +15,8 @@
     "pk": 2,
     "fields": {
       "user_id": 1,
-      "name" : "Max",
-      "description" : "Short and Ugly",
-      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "actions" : "2",
-      "weapon" : "Sword/5/1D6",
-      "armour" : "1d6 Chain",
-      "adventuring_skills" : "6",
+      "npccategory": 2,
+      "name" : "Gundar",
       "stamina" : "6",
       "notes" : "Intelligent"
     }
@@ -36,13 +26,8 @@
     "pk": 3,
     "fields": {
       "user_id": 1,
-      "name" : "Tom",
-      "description" : "Short and Ugly",
-      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "actions" : "3",
-      "weapon" : "Axe/5/1D6",
-      "armour" : "1d6 Chain",
-      "adventuring_skills" : "6",
+      "npccategory": 3,
+      "name" : "Gundar",
       "stamina" : "6",
       "notes" : "Intelligent"
     }

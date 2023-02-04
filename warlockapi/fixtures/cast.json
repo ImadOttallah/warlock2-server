@@ -4,13 +4,8 @@
     "pk": 1,
     "fields": {
       "user_id": 1,
+      "castcategory": 1,
       "name" : "Dragon",
-      "description" : "Short and Ugly",
-      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "actions" : "1",
-      "weapon" : "Axe/5/1D6",
-      "armour" : "1d6 Chain",
-      "adventuring_skills" : "6",
       "stamina" : "6",
       "notes" : "Intelligent"
     }
@@ -20,13 +15,8 @@
     "pk": 2,
     "fields": {
       "user_id": 2,
+      "castcategory": 2,
       "name" : "Griffin",
-      "description" : "Short and Ugly",
-      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "actions" : "2",
-      "weapon" : "Sword/5/1D6",
-      "armour" : "1d6 Chain",
-      "adventuring_skills" : "6",
       "stamina" : "6",
       "notes" : "Intelligent"
     }
@@ -36,13 +26,8 @@
     "pk": 3,
     "fields": {
       "user_id": 3,
+      "castcategory": 3,
       "name" : "Scorpion",
-      "description" : "Short and Ugly",
-      "image": "https://www.belloflostsouls.net/2014/10/whfb-tactics-dwarfs-lords-and-army-special-rules.html",
-      "actions" : "3",
-      "weapon" : "Axe/5/1D6",
-      "armour" : "1d6 Chain",
-      "adventuring_skills" : "6",
       "stamina" : "6",
       "notes" : "Intelligent"
     }

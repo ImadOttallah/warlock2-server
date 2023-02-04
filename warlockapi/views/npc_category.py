@@ -10,27 +10,27 @@ class NpcCategoryView(ViewSet):
     def retrieve(self, request, pk):
         """Handle GET request for single campaign"""
         try:
-            npc_category = NpcCategory.objects.get(pk=pk)
-            serializer = NpcCategorySerializer(npc_category)
+            npccategory = NpcCategory.objects.get(pk=pk)
+            serializer = NpcCategorySerializer(npccategory)
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
     def list(self, request):
         """Handle GET request for single campaign"""
-        npc_categories = NpcCategory.objects.all()
-        serializer = NpcCategorySerializer(npc_categories, many = True)
+        npccategories = NpcCategory.objects.all()
+        serializer = NpcCategorySerializer(npccategories, many = True)
         return Response(serializer.data)
 
     def  create(self, request):
         """Handle GET request for single campaign"""
         npc = Npc.objects.get(pk=request.data["npc"])
-        npc_type = NpcType.objects.get(pk=request.data["npc_type"])
-        npc_category = NpcCategory.objects.create(
+        npctype = NpcType.objects.get(pk=request.data["npc_type"])
+        npccategory = NpcCategory.objects.create(
             npc = npc,
-            npc_type = npc_type
+            npctype = npctype
         )
-        serializer = NpcCategorySerializer(npc_category)
+        serializer = NpcCategorySerializer(npccategory)
         return Response(serializer.data)
 
     def destroy(self, request, pk):
@@ -43,5 +43,5 @@ class NpcCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NpcCategory
-        fields = ('id', 'npc', 'npc_type')
+        fields = ('id', 'npctype')
         depth = 2

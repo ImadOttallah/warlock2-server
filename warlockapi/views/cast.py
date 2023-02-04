@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from warlockapi.models import Cast, User
+from warlockapi.models import Cast, User, CastCategory
 
 
 class CastView(ViewSet):
@@ -19,26 +19,30 @@ class CastView(ViewSet):
     def list(self, request):
         """GET all campaigns"""
         casts = Cast.objects.all()
+        castcategory = request.query_params.get('category', None)
+        if castcategory is not None:
+            categories = categories.filter(castcategory_id=castcategory)
         serializer = CastSerializer(casts, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         """Handle PUT requests for a campaign"""
-        user = User.objects.get(pk=request.data["user_id"])
+        uid = request.data['user_id']
+        user = User.objects.filter(uid=uid).first()
+        castcategory = CastCategory.objects.get(pk=request.data["castcategory"])
 
         cast = Cast.objects.create(
             name = request.data["name"],
-            description = request.data["description"],
-            image = request.data["image"],
-            actions = request.data["actions"],
-            weapon = request.data["weapon"],
-            armour = request.data["armour"],
-            adventuring_skills = request.data["adventuring_skills"],
             stamina = request.data["stamina"],
             notes = request.data["notes"],
-            user=user
+            user=user,
+            castcategory=castcategory
 
         )
+        # for category in castcategory:
+        #     print(category)
+        #     CastCategory.objects.create(cast=cast, castcategory=CastCategory.objects.get(pk=category))
+        #     # serializer = ProductSerializer(product)
         serializer = CastSerializer(cast)
         return Response(serializer.data)
 
@@ -47,15 +51,11 @@ class CastView(ViewSet):
 
         cast = Cast.objects.get(pk=pk)
         cast.name = request.data["name"]
-        cast.description = request.data["description"]
-        cast.image = request.data["image"]
-        cast.actions = request.data["actions"]
-        cast.weapon = request.data["weapon"]
-        cast.armour = request.data["armour"]
-        cast.adventuring_skills = request.data["adventuring_skills"]
         cast.stamina = request.data["stamina"]
         cast.notes = request.data["notes"]
-        cast.save()
+        cast_category = CastCategory.objects.get(pk=request.data["castcategory"])
+        cast.castcategory = cast_category
+        cast.save()     
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk):
@@ -68,15 +68,10 @@ class CastSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cast
         fields = ('id',
-                  'user',
                   'name',
-                  'description'
-                  'image',
-                  'actions',
-                  'weapon',
-                  'armour',
-                  'adventuring_skills',
                   'stamina',
-                  'notes')
+                  'notes',
+                  'castcategory',
+                  'user')
         depth = 2
     

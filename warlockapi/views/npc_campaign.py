@@ -10,27 +10,27 @@ class NpcCampaignView(ViewSet):
     def retrieve(self, request, pk):
         """Handle GET request for single campaign"""
         try:
-            npc_campaign = NpcCampaign.objects.get(pk=pk)
-            serializer = NpcCampaignSerializer(npc_campaign)
+            npccampaign = NpcCampaign.objects.get(pk=pk)
+            serializer = NpcCampaignSerializer(npccampaign)
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
     def list(self, request):
         """Handle GET request for single campaign"""
-        npc_campaigns = NpcCampaign.objects.all()
-        serializer = NpcCampaignSerializer(npc_campaigns, many = True)
+        npccampaigns = NpcCampaign.objects.all()
+        serializer = NpcCampaignSerializer(npccampaigns, many = True)
         return Response(serializer.data)
 
     def  create(self, request):
         """Handle GET request for single campaign"""
         npc = Npc.objects.get(pk=request.data["npc"])
         campaign = Campaign.objects.get(pk=request.data["campaign"])
-        npc_campaign = NpcCampaign.objects.create(
+        npccampaign = NpcCampaign.objects.create(
             npc = npc,
             campaign = campaign
         )
-        serializer = NpcCampaignSerializer(npc_campaign)
+        serializer = NpcCampaignSerializer(npccampaign)
         return Response(serializer.data)
 
     def update(self, request, pk):
